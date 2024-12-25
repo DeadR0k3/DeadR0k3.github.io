@@ -82,3 +82,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             content.style.display = "block"; // Muestra el contenido principal
         }, 500); // Tiempo en milisegundos que coincide con la duración de la transición
     });
+
+    // Script para el botón desplegable
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    });
