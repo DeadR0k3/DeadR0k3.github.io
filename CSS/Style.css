@@ -115,6 +115,48 @@ body {
     background: var(--primary-color);
 }
 
+.sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgba(71, 71, 71, 0.466);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  text-emphasis: none;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.sidebar li {
+  width: 100%;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.sidebar a {
+  width: 100%;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar svg {
+  fill: rgb(0, 0, 0);
+}
+
 /* Banner con efecto parallax */
 .banner {
     position: relative;
@@ -1011,6 +1053,22 @@ footer p {
   transform: translate(2px, 2px);
 }
 
+@media(max-width: 1000px) {
+  .hideOnMobile{
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+@media(max-width: 600px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
 
   /* Distintive section */
@@ -1119,5 +1177,52 @@ footer p {
   .card-content {
     padding: 20px;
     text-align: center;
+  }
+
+    /* Seccion Contacto */
+  .contact-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .contact-content p {
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  .contact-button {
+    text-decoration: none;
+  }
+
+  .contact-button.whatsapp {
+    background: #25d366;
+    animation: none;
+    transform: none;
+  }
+
+  .contact-button.gmail {
+    background: #d93025;
+  }
+
+  .contact-button:hover {
+    transform: none;
+    box-shadow: noned;
+  }
+
+  .extra-content {
+    flex: 1 1 300px;
+    padding: 40px;
+    text-align: center;
+    border-left: none;
+  }
+
+  .extra-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .extra-content img {
+    box-shadow: none;
   }
 }

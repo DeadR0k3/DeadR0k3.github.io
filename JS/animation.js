@@ -68,27 +68,37 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-    window.addEventListener("load", () => {
-        const loader = document.getElementById("loader");
-        const content = document.getElementById("content");
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    const content = document.getElementById("content");
 
         // Añade una transición para ocultar suavemente el loader
-        loader.style.opacity = "0";
-        loader.style.transition = "opacity 0.5s ease";
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.5s ease";
 
         // Espera que la transición termine y elimina el loader
-        setTimeout(() => {
-            loader.style.display = "none";
-            content.style.display = "block"; // Muestra el contenido principal
-        }, 500); // Tiempo en milisegundos que coincide con la duración de la transición
-    });
+    setTimeout(() => {
+        loader.style.display = "none";
+        content.style.display = "block"; // Muestra el contenido principal
+    }, 500); // Tiempo en milisegundos que coincide con la duración de la transición
+});
 
     // Script para el botón desplegable
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navLinks = document.querySelector(".nav-links");
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-        menuToggle.addEventListener("click", function () {
-            navLinks.classList.toggle("active");
-        });
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
     });
+});
+
+function showSidebar() {
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'flex'
+}
+
+function hideSidebar() {
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'none'
+}

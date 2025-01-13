@@ -17,11 +17,31 @@
                 <span> Leana&Soft </span>
             </button>
         </div>
+        <ul class="sidebar">
+            <li onclick=hideSidebar()>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#000000">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
+                </a>
+            </li>
+            <li><a href="index.html" class="menu-item">Inicio</a></li>
+            <li><a href="Services.html" class="menu-item">Servicios</a></li>
+            <li><a href="About.html" class="menu-item">Nosotros</a></li>
+            <li><a href="Contact.html" class="menu-item">Contacto</a></li>
+        </ul>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-links">Inicio</a></li>
-            <li><a href="Services.html" class="nav-links">Servicios</a></li>
-            <li><a href="About.html" class="nav-links">Nosotros</a></li>
-            <li><a href="Contact.html" class="nav-links">Contacto</a></li>
+            <li class="hideOnMobile"><a href="index.html" class="nav-links">Inicio</a></li>
+            <li class="hideOnMobile"><a href="Services.html" class="nav-links">Servicios</a></li>
+            <li class="hideOnMobile"><a href="About.html" class="nav-links">Nosotros</a></li>
+            <li class="hideOnMobile"><a href="Contact.html" class="nav-links">Contacto</a></li>
+            <li class="menu-btn" onclick=showSidebar()>
+                <a href="#" style="display: flex; justify-content: center; align-items: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#000000">
+                    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                  </svg>
+                </a>
+              </li>
         </ul>
     </nav>
 
