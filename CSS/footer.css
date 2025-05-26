@@ -1,0 +1,191 @@
+:root {
+  --footer-neon-blue: #0ff0fc;
+  --footer-dark-blue: #0a192f;
+  --footer-light-blue: #64ffda;
+  --footer-text: #ccd6f6;
+  --footer-bg-gradient: linear-gradient(135deg, #0a192f, #172a45);
+  --footer-shadow: 0 -5px 25px rgba(10, 25, 47, 0.9);
+  --footer-border: 1px solid rgba(15, 240, 252, 0.2);
+}
+
+/* ============================================= */
+/* ESTRUCTURA PRINCIPAL                          */
+/* ============================================= */
+.footer-neon {
+  background: var(--footer-bg-gradient);
+  color: white;
+  padding: 40px 0 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: auto;
+  width: 100%;
+  box-shadow: var(--footer-shadow);
+  border-top: var(--footer-border);
+  position: relative;
+}
+
+/* Borde superior animado */
+.footer-neon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+            transparent, 
+            var(--footer-neon-blue), 
+            transparent);
+  animation: footer-glow 3s linear infinite;
+}
+
+@keyframes footer-glow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ============================================= */
+/* CONTENEDOR Y SECCIONES                        */
+/* ============================================= */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 0 20px 30px;
+}
+
+.footer-section {
+  padding: 20px;
+  position: relative;
+}
+
+.footer-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 50px;
+  height: 2px;
+  background-color: var(--footer-neon-blue);
+  transition: width 0.4s ease;
+}
+
+.footer-section:hover::after {
+  width: calc(100% - 40px);
+}
+
+/* ============================================= */
+/* TIPOGRAFÍA Y TEXTOS                           */
+/* ============================================= */
+.footer-title {
+  color: var(--footer-neon-blue);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(15, 240, 252, 0.6);
+  position: relative;
+  display: inline-block;
+}
+
+.neon-text {
+  text-shadow: 0 0 5px var(--footer-neon-blue),
+               0 0 10px rgba(15, 240, 252, 0.3);
+}
+
+.footer-text {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-text:hover {
+  color: var(--footer-light-blue);
+  text-shadow: 0 0 5px rgba(100, 149, 255, 0.5);
+}
+
+/* ============================================= */
+/* ELEMENTOS INTERACTIVOS                        */
+/* ============================================= */
+/* Iconos */
+.footer-icon {
+  color: var(--footer-neon-blue);
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Botones */
+.footer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 25px;
+  margin: 5px 0;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-button i {
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+.whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.email {
+  background-color: #DB4437;
+  color: white;
+}
+
+.footer-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(15, 240, 252, 0.4);
+}
+
+/* ============================================= */
+/* SECCIoN INFERIOR                              */
+/* ============================================= */
+.footer-bottom {
+  background-color: rgba(10, 25, 47, 0.95);
+  padding: 15px 0;
+  text-align: center;
+  border-top: 1px solid rgba(15, 240, 252, 0.1);
+}
+
+.footer-copyright {
+  color: var(--footer-text);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ============================================= */
+/* DISEÑO RESPONSIVE                             */
+/* ============================================= */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    padding: 0 15px 20px;
+  }
+  
+  .footer-section {
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .footer-section::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-button {
+    max-width: 250px;
+    margin: 5px auto;
+  }
+}
