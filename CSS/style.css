@@ -1,0 +1,355 @@
+:root {
+  --primary: #00f0ff;
+  --secondary: #7b2dff;
+  --dark: #050510;
+  --darker: #020208;
+  --gray-light: #e0e0e0;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00a2ff #001133;
+}
+
+/* ESTRUCTURA PRINCIPAL */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark);
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 20, 0.8);
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(145deg, #00f2ff, #0084ff);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    0 0 5px #00f2ff,
+    0 0 10px #0084ff,
+    inset 0 0 5px rgba(0, 242, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(145deg, #00ffff, #0066ff);
+  box-shadow: 
+    0 0 10px #00ffff,
+    0 0 15px #0066ff,
+    inset 0 0 8px rgba(0, 255, 255, 0.7);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 20, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  animation: neon-pulse 3s infinite alternate;
+}
+
+iframe, embed {
+  max-width: 100%;
+}
+
+.title-font {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.glow-text {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+.card-glass {
+  background: rgba(5, 5, 16, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: translateY(-5px);
+}
+
+/* ANIMACIONES */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px #00f2ff,
+      0 0 10px #0084ff;
+  }
+  50% {
+    box-shadow: 
+      0 0 10px #00f2ff,
+      0 0 20px #0084ff;
+  }
+}
+
+@keyframes levitate {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(100px) scale(1.02);
+  }
+}
+
+.floating {
+  animation: levitate 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.floating-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+    
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-25px) translateX(-20px); }
+  50% { transform: translateY(0) translateX(-10px); }
+  75% { transform: translateY(-25px) translateX(20px); }
+}
+
+/* Laptop */
+#laptop-image {
+  width: 500px;
+  height: auto;
+}
+
+gradient-text {
+  background: linear-gradient(90deg, #00f0ff, #7b2dff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 4s ease infinite;
+  background-size: 200% auto;
+}
+    
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+/* iconos */
+.neon-icon-blue {
+  color: #00f0ff;
+  text-shadow: 0 0 5px #00a2ff, 
+              0 0 10px #00a2ff,
+              0 0 20px #00a2ff;
+  animation: neon-pulse-blue 1.5s infinite alternate;
+}
+        
+@keyframes neon-pulse-blue {
+  from { 
+    text-shadow: 0 0 5px #00a2ff, 
+                0 0 10px #00a2ff; 
+  }
+  to { 
+    text-shadow: 0 0 10px #00a2ff, 
+                0 0 20px #00a2ff, 
+                0 0 30px #00a2ff; 
+  }
+}
+
+.neon-icon-blue {
+  color: #00f0ff;
+  text-shadow: 0 0 5px #00a2ff, 
+              0 0 10px #00a2ff,
+              0 0 20px #00a2ff;
+  animation: neon-pulse-blue 1.5s infinite alternate;
+}
+        
+.neon-icon-purple {
+  color: #b362ff;
+  text-shadow: 0 0 5px #7b2dff, 
+              0 0 10px #7b2dff,
+              0 0 20px #7b2dff;
+  animation: neon-pulse-purple 1.5s infinite alternate;
+}
+        
+.neon-icon-cyan {
+  color: #00f7ff;
+  text-shadow: 0 0 5px #00ccff, 
+              0 0 10px #00ccff,
+              0 0 20px #00ccff;
+  animation: neon-pulse-cyan 1.5s infinite alternate;
+}
+        
+.neon-icon-pink {
+  color: #ff6ec7;
+  text-shadow: 0 0 5px #ff2d9e, 
+              0 0 10px #ff2d9e,
+              0 0 20px #ff2d9e;
+  animation: neon-pulse-pink 1.5s infinite alternate;
+}
+        
+.neon-icon-green {
+  color: #00ffaa;
+  text-shadow: 0 0 5px #00cc88, 
+              0 0 10px #00cc88,
+              0 0 20px #00cc88;
+  animation: neon-pulse-green 1.5s infinite alternate;
+}
+        
+.neon-icon-orange {
+  color: #ffaa00;
+  text-shadow: 0 0 5px #ff7700, 
+              0 0 10px #ff7700,
+              0 0 20px #ff7700;
+  animation: neon-pulse-orange 1.5s infinite alternate;
+}
+        
+@keyframes neon-pulse-blue {
+  from { text-shadow: 0 0 5px #00a2ff, 0 0 10px #00a2ff; }
+  to { text-shadow: 0 0 10px #00a2ff, 0 0 20px #00a2ff, 0 0 30px #00a2ff; }
+}
+        
+@keyframes neon-pulse-purple {
+  from { text-shadow: 0 0 5px #7b2dff, 0 0 10px #7b2dff; }
+  to { text-shadow: 0 0 10px #7b2dff, 0 0 20px #7b2dff, 0 0 30px #7b2dff; }
+}
+        
+@keyframes neon-pulse-cyan {
+  from { text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff; }
+  to { text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff; }
+}
+        
+@keyframes neon-pulse-pink {
+  from { text-shadow: 0 0 5px #ff2d9e, 0 0 10px #ff2d9e; }
+  to { text-shadow: 0 0 10px #ff2d9e, 0 0 20px #ff2d9e, 0 0 30px #ff2d9e; }
+}
+        
+@keyframes neon-pulse-green {
+  from { text-shadow: 0 0 5px #00cc88, 0 0 10px #00cc88; }
+  to { text-shadow: 0 0 10px #00cc88, 0 0 20px #00cc88, 0 0 30px #00cc88; }
+}
+        
+@keyframes neon-pulse-orange {
+  from { text-shadow: 0 0 5px #ff7700, 0 0 10px #ff7700; }
+  to { text-shadow: 0 0 10px #ff7700, 0 0 20px #ff7700, 0 0 30px #ff7700; }
+}
+
+/* Estilo circuito */
+.circuit-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at center, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px, 30px 30px, 30px 30px;
+}
+                
+.circuit-line {
+  background: linear-gradient(to bottom, 
+    transparent, 
+    rgba(0, 240, 255, 0.3) 20%, 
+    rgba(0, 240, 255, 0.6) 50%, 
+    rgba(0, 240, 255, 0.3) 80%, 
+    transparent);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  animation: circuit-pulse 3s infinite;
+}
+                
+.circuit-node {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 240, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.2);
+  transition: all 0.3s ease;
+}
+                
+.circuit-node:hover {
+  border-color: rgba(0, 240, 255, 0.8);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.3);
+}
+                
+.circuit-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: radial-gradient(circle at center, rgba(0, 240, 255, 0.8) 2px, transparent 3px);
+  background-size: 20px 20px;
+  animation: rotate-dots 20s linear infinite;
+}
+                
+.neon-icon-blue {
+  color: #00f0ff;
+  text-shadow: 0 0 8px #00a2ff, 0 0 15px #00a2ff;
+  z-index: 1;
+}
+                
+@keyframes circuit-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+                
+@keyframes rotate-dots {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+                
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+  .floating-animation, #laptop-image {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+ .circuit-node {
+    width: 70px;
+    height: 70px;
+  }
+                    
+  .circuit-line {
+    display: none;
+  }
+}
