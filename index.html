@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para ti, mi amor</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
@@ -29,13 +29,32 @@
       z-index: 2;
       color: red;
       font-family: 'Great Vibes', cursive;
-      font-size: 32px;
       text-align: center;
       white-space: pre-line;
       text-shadow: 0 0 10px black;
       max-width: 80%;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      line-height: 1.2;
+    }
+
+    /* Adaptar el tamaño del texto en diferentes resoluciones */
+    @media (max-width: 600px) {
+      #typedText {
+        font-size: 20px;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 1024px) {
+      #typedText {
+        font-size: 28px;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      #typedText {
+        font-size: 36px;
+      }
     }
   </style>
 </head>
@@ -48,8 +67,16 @@
     const ctx = canvas.getContext("2d");
     const textDiv = document.getElementById("typedText");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', () => {
+      location.reload(); // reiniciar animación al redimensionar para no romper la forma
+    });
+
+    resizeCanvas();
 
     const particles = [];
     const heart = [];
@@ -58,8 +85,10 @@
     const centerY = canvas.height / 2;
     const text = "Eres la pieza que hace latir mi caos\nTe quiero demasiado, mi niña";
 
+    const scaleBase = canvas.width < 500 ? 7 : 10; // 💡 corazón más pequeño en celulares
+
     function heartFunction(t) {
-      const scale = 10;
+      const scale = scaleBase;
       const x = scale * 16 * Math.pow(Math.sin(t), 3);
       const y = -scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
       return { x, y };
@@ -85,20 +114,21 @@
     }
 
     let animationFrame = 0;
+
     function animate() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       let allClose = true;
 
-      particles.forEach((p, index) => {
+      particles.forEach((p) => {
         const dx = p.tx - p.x;
         const dy = p.ty - p.y;
 
         const distance = Math.sqrt(dx * dx + dy * dy);
         if (distance > 1) allClose = false;
 
-        p.vx += dx * 0.0025; // más lento
+        p.vx += dx * 0.0025;
         p.vy += dy * 0.0025;
         p.vx *= 0.85;
         p.vy *= 0.85;
@@ -123,14 +153,14 @@
       let i = 0;
       textDiv.style.opacity = 1;
       textDiv.style.left = `${centerX}px`;
-      textDiv.style.top = `${centerY - 20}px`;
+      textDiv.style.top = `${centerY}px`;
       textDiv.style.transform = "translate(-50%, -50%)";
 
       const interval = setInterval(() => {
         textDiv.innerText = text.slice(0, i);
         i++;
         if (i > text.length) clearInterval(interval);
-      }, 80); // velocidad de escritura
+      }, 80);
     }
 
     animate();
