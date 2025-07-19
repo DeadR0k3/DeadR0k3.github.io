@@ -25,33 +25,10 @@
       left: 0;
       z-index: 1;
     }
-
-    .message {
-      position: relative;
-      z-index: 2;
-      color: red;
-      font-size: 2.5rem;
-      text-align: center;
-      margin-top: 20px;
-      opacity: 0;
-      animation: fadeIn 3s ease-in-out 5s forwards;
-      font-family: 'Great Vibes', cursive;
-      white-space: pre-line;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
   </style>
 </head>
 <body>
   <canvas id="heartCanvas"></canvas>
-  <div class="message">
-    Eres la pieza que hace latir mi caos
-    Te quiero demasiado, mi niña
-  </div>
 
   <script>
     const canvas = document.getElementById("heartCanvas");
@@ -62,6 +39,8 @@
     const particles = [];
     const heart = [];
     const numParticles = 800;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
 
     function heartFunction(t) {
       const scale = 10 + Math.sin(Date.now() * 0.003) * 2;
@@ -74,19 +53,35 @@
       const t = Math.PI * 2 * (i / numParticles);
       const pos = heartFunction(t);
       heart.push({
-        x: canvas.width / 2 + pos.x,
-        y: canvas.height / 2 + pos.y
+        x: centerX + pos.x,
+        y: centerY + pos.y
       });
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        tx: canvas.width / 2 + pos.x,
-        ty: canvas.height / 2 + pos.y,
+        tx: centerX + pos.x,
+        ty: centerY + pos.y,
         vx: 0,
         vy: 0,
         radius: Math.random() * 1.5 + 1,
         color: "red"
       });
+    }
+
+    function drawCenteredText(text, yOffset = 0) {
+      ctx.save();
+      ctx.font = "32px 'Great Vibes'";
+      ctx.fillStyle = "red";
+      ctx.textAlign = "center";
+      ctx.shadowColor = "black";
+      ctx.shadowBlur = 10;
+
+      const lines = text.split('\n');
+      lines.forEach((line, i) => {
+        ctx.fillText(line, centerX, centerY + yOffset + i * 40);
+      });
+
+      ctx.restore();
     }
 
     function animate() {
@@ -108,6 +103,8 @@
         ctx.fillStyle = p.color;
         ctx.fill();
       });
+
+      drawCenteredText("Eres la pieza que hace latir mi caos\nTe quiero demasiado, mi niña", 10);
 
       requestAnimationFrame(animate);
     }
