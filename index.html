@@ -14,9 +14,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
       height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
     }
 
     canvas {
@@ -25,14 +23,31 @@
       left: 0;
       z-index: 1;
     }
+
+    #typedText {
+      position: absolute;
+      z-index: 2;
+      color: red;
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      text-align: center;
+      white-space: pre-line;
+      text-shadow: 0 0 10px black;
+      max-width: 80%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
   </style>
 </head>
 <body>
   <canvas id="heartCanvas"></canvas>
+  <div id="typedText"></div>
 
   <script>
     const canvas = document.getElementById("heartCanvas");
     const ctx = canvas.getContext("2d");
+    const textDiv = document.getElementById("typedText");
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -41,9 +56,10 @@
     const numParticles = 800;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
+    const text = "Eres la pieza que hace latir mi caos\nTe quiero demasiado, mi niña";
 
     function heartFunction(t) {
-      const scale = 10 + Math.sin(Date.now() * 0.003) * 2;
+      const scale = 10;
       const x = scale * 16 * Math.pow(Math.sin(t), 3);
       const y = -scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
       return { x, y };
@@ -68,33 +84,24 @@
       });
     }
 
-    function drawCenteredText(text, yOffset = 0) {
-      ctx.save();
-      ctx.font = "32px 'Great Vibes'";
-      ctx.fillStyle = "red";
-      ctx.textAlign = "center";
-      ctx.shadowColor = "black";
-      ctx.shadowBlur = 10;
-
-      const lines = text.split('\n');
-      lines.forEach((line, i) => {
-        ctx.fillText(line, centerX, centerY + yOffset + i * 40);
-      });
-
-      ctx.restore();
-    }
-
+    let animationFrame = 0;
     function animate() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach(p => {
+      let allClose = true;
+
+      particles.forEach((p, index) => {
         const dx = p.tx - p.x;
         const dy = p.ty - p.y;
-        p.vx += dx * 0.01;
-        p.vy += dy * 0.01;
-        p.vx *= 0.9;
-        p.vy *= 0.9;
+
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance > 1) allClose = false;
+
+        p.vx += dx * 0.0025; // más lento
+        p.vy += dy * 0.0025;
+        p.vx *= 0.85;
+        p.vy *= 0.85;
         p.x += p.vx;
         p.y += p.vy;
 
@@ -104,9 +111,26 @@
         ctx.fill();
       });
 
-      drawCenteredText("Eres la pieza que hace latir mi caos\nTe quiero demasiado, mi niña", 10);
+      animationFrame++;
+      if (allClose && animationFrame > 100) {
+        showTextTyping(text);
+      } else {
+        requestAnimationFrame(animate);
+      }
+    }
 
-      requestAnimationFrame(animate);
+    function showTextTyping(text) {
+      let i = 0;
+      textDiv.style.opacity = 1;
+      textDiv.style.left = `${centerX}px`;
+      textDiv.style.top = `${centerY - 20}px`;
+      textDiv.style.transform = "translate(-50%, -50%)";
+
+      const interval = setInterval(() => {
+        textDiv.innerText = text.slice(0, i);
+        i++;
+        if (i > text.length) clearInterval(interval);
+      }, 80); // velocidad de escritura
     }
 
     animate();
