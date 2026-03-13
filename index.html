@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comergreen - Distribución de equipos médicos profesionales. Tecnología de alta precisión para hospitales y clínicas.">
+    <meta name="keywords" content="equipos médicos, tecnología hospitalaria, rayos x, ultrasonido, electrocardiógrafo, mesas quirúrgicas">
+    <title>Comergreen | Tecnología Médica de Alta Precisión</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            green: '#059669',
+                            'green-light': '#10b981',
+                            blue: '#2563eb',
+                            'blue-dark': '#1e40af',
+                            slate: '#64748b',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="assets/css/components/style.css">
+</head>
+<body class="font-sans text-slate-700 antialiased bg-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-slate-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2" data-aos="fade-right">
+                    <div class="w-10 h-10 bg-gradient-to-br from-medical-green to-medical-blue rounded-xl flex items-center justify-center shadow-lg shadow-medical-green/20">
+                        <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl text-slate-800 tracking-tight">Comer<span class="text-medical-green">green</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8" data-aos="fade-down">
+                    <a href="#inicio" class="text-slate-600 hover:text-medical-green font-medium transition-colors duration-300 text-sm uppercase tracking-wide">Inicio</a>
+                    <a href="#productos" class="text-slate-600 hover:text-medical-green font-medium transition-colors duration-300 text-sm uppercase tracking-wide">Productos</a>
+                    <a href="#nosotros" class="text-slate-600 hover:text-medical-green font-medium transition-colors duration-300 text-sm uppercase tracking-wide">Nosotros</a>
+                    <a href="#destacados" class="text-slate-600 hover:text-medical-green font-medium transition-colors duration-300 text-sm uppercase tracking-wide">Destacados</a>
+                    <a href="#contacto" class="text-slate-600 hover:text-medical-green font-medium transition-colors duration-300 text-sm uppercase tracking-wide">Contacto</a>
+                </div>
+
+                <!-- WhatsApp Button Desktop -->
+                <div class="hidden md:flex items-center" data-aos="fade-left">
+                    <a href="https://wa.me/526631011171?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="group flex items-center gap-2 bg-gradient-to-r from-medical-green to-emerald-500 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-medical-green/30 transition-all duration-300 hover:-translate-y-0.5">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>Cotizar por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-medical-green transition-colors p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#inicio" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-medical-green hover:bg-slate-50 rounded-lg transition-colors">Inicio</a>
+                <a href="#productos" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-medical-green hover:bg-slate-50 rounded-lg transition-colors">Productos</a>
+                <a href="#nosotros" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-medical-green hover:bg-slate-50 rounded-lg transition-colors">Nosotros</a>
+                <a href="#destacados" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-medical-green hover:bg-slate-50 rounded-lg transition-colors">Destacados</a>
+                <a href="#contacto" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-medical-green hover:bg-slate-50 rounded-lg transition-colors">Contacto</a>
+                <a href="https://wa.me/526631011171?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="flex items-center justify-center gap-2 mt-4 bg-medical-green text-white px-6 py-3 rounded-xl font-semibold">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>Cotizar por WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50/50 to-transparent"></div>
+        
+        <!-- Decorative Circles -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-medical-green/5 rounded-full blur-3xl" data-aos="fade-up" data-aos-duration="2000"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-medical-blue/5 rounded-full blur-3xl" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-medical-green text-sm font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-medical-green animate-pulse"></span>
+                        Equipamiento Médico Profesional
+                    </div>
+                    
+                    <h1 class="font-heading text-5xl lg:text-7xl font-bold text-slate-800 leading-tight">
+                        Tecnología Médica de <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-green to-medical-blue">Alta Precisión</span>
+                    </h1>
+                    
+                    <p class="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl">
+                        Distribución de equipos médicos profesionales para hospitales, clínicas y centros de diagnóstico. Tecnología confiable que salva vidas.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#productos" class="group inline-flex items-center justify-center gap-2 bg-medical-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                            <span>Ver productos</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://wa.me/526631011171?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="inline-flex items-center justify-center gap-2 bg-emerald-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-emerald-600 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-1">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            <span>Cotizar por WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="flex gap-8 pt-4 border-t border-slate-200">
+                        <div>
+                            <div class="text-3xl font-bold text-slate-800">500+</div>
+                            <div class="text-sm text-slate-500">Equipos vendidos</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-slate-800">50+</div>
+                            <div class="text-sm text-slate-500">Clientes activos</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-slate-800">10+</div>
+                            <div class="text-sm text-slate-500">Años de experiencia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="relative lg:h-[600px]" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-medical-green/20">
+                        <img src="assets/img/02bb0c59-a0aa-4bd2-a59f-c131a4aabcff.png" alt="Tecnología médica avanzada" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
+                    </div>
+                    
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 z-20 max-w-xs hidden md:block" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-medical-green"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-800">Garantía Incluida</div>
+                                <div class="text-sm text-slate-500">Todos nuestros equipos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-medical-green font-semibold tracking-wider uppercase text-sm">Sobre Nosotros</span>
+                <h2 class="mt-3 font-heading text-4xl lg:text-5xl font-bold text-slate-800">Comprometidos con la excelencia médica</h2>
+                <p class="mt-4 text-lg text-slate-600">
+                    Comergreen es una empresa dedicada a la distribución y comercialización de equipos médicos profesionales, ofreciendo tecnología moderna para hospitales, clínicas y centros de diagnóstico.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value Cards -->
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-medical-green/5 hover:border-medical-green/20 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="award" class="w-7 h-7 text-medical-green"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-slate-800 mb-3">Calidad</h3>
+                    <p class="text-slate-600 leading-relaxed">Equipos certificados que cumplen con los más altos estándares internacionales de salud.</p>
+                </div>
+
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-medical-green/5 hover:border-medical-green/20 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="cpu" class="w-7 h-7 text-medical-blue"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-slate-800 mb-3">Innovación</h3>
+                    <p class="text-slate-600 leading-relaxed">Tecnología de punta que transforma la manera de diagnosticar y tratar pacientes.</p>
+                </div>
+
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-medical-green/5 hover:border-medical-green/20 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="shield" class="w-7 h-7 text-medical-green"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-slate-800 mb-3">Confianza</h3>
+                    <p class="text-slate-600 leading-relaxed">Relaciones duraderas basadas en la transparencia y el servicio excepcional.</p>
+                </div>
+
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-medical-green/5 hover:border-medical-green/20 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="stethoscope" class="w-7 h-7 text-medical-blue"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-slate-800 mb-3">Profesionalismo</h3>
+                    <p class="text-slate-600 leading-relaxed">Asesoría especializada para seleccionar el equipo perfecto según sus necesidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Catalog -->
+    <section id="productos" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-medical-green font-semibold tracking-wider uppercase text-sm">Catálogo</span>
+                <h2 class="mt-3 font-heading text-4xl lg:text-5xl font-bold text-slate-800">Equipos médicos profesionales</h2>
+                <p class="mt-4 text-lg text-slate-600">Tecnología avanzada para diagnóstico, monitoreo y equipamiento hospitalario.</p>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-medical-green/10 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="0">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/img/Máquina de Rayos X Digital.png" alt="Máquina de Rayos X" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-medical-blue text-white text-xs font-bold rounded-full uppercase tracking-wide">Diagnóstico</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-xl font-bold text-slate-800 mb-2">Máquina de Rayos X Digital</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">Sistema de radiografía digital de alta resolución para diagnóstico preciso y rápido.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-medical-green font-bold">Disponible</span>
+                            <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20la%20Máquina%20de%20Rayos%20X%20Digital" target="_blank" class="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-medical-green transition-colors">
+                                Cotizar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-medical-green/10 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/img/Electrocardiógrafo 12 Canales.png" alt="Electrocardiógrafo" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-medical-green text-white text-xs font-bold rounded-full uppercase tracking-wide">Monitoreo</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-xl font-bold text-slate-800 mb-2">Electrocardiógrafo 12 Canales</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">Registro preciso de la actividad cardíaca con análisis automatizado avanzado.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-medical-green font-bold">Disponible</span>
+                            <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20el%20Electrocardiógrafo%2012%20Canales" target="_blank" class="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-medical-green transition-colors">
+                                Cotizar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-medical-green/10 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/img/Ultrasonido Doppler 4D.png" alt="Ultrasonido" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-medical-blue text-white text-xs font-bold rounded-full uppercase tracking-wide">Imagenología</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-xl font-bold text-slate-800 mb-2">Ultrasonido Doppler 4D</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">Imágenes en tiempo real con tecnología Doppler para diagnóstico vascular y abdominal.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-medical-green font-bold">Disponible</span>
+                            <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20el%20Ultrasonido%20Doppler%204D" target="_blank" class="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-medical-green transition-colors">
+                                Cotizar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-medical-green/10 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="0">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/img/Mesa de Quirófano Eléctrica.png" alt="Mesa de Quirófano" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-slate-700 text-white text-xs font-bold rounded-full uppercase tracking-wide">Quirófano</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-xl font-bold text-slate-800 mb-2">Mesa de Quirófano Eléctrica</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">Control hidráulico eléctrico con radiotransparencia para cirugías especializadas.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-medical-green font-bold">Disponible</span>
+                            <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20la%20Mesa%20de%20Quirófano%20Eléctrica" target="_blank" class="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-medical-green transition-colors">
+                                Cotizar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-medical-green/10 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/img/Monitor de Signos Vitales.png" alt="Monitor Multiparámetros" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-medical-green text-white text-xs font-bold rounded-full uppercase tracking-wide">Monitoreo</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-xl font-bold text-slate-800 mb-2">Monitor de Signos Vitales</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">Pantalla táctil HD con monitoreo continuo de ECG, SpO2, temperatura y presión.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-medical-green font-bold">Disponible</span>
+                            <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20el%20Monitor%20de%20Signos%20Vitales" target="_blank" class="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-medical-green transition-colors">
+                                Cotizar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl hover:shadow-medical-green/10 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/img/Carro de Resucitación.png" alt="Mesa de Resucitación" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full uppercase tracking-wide">Emergencias</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading text-xl font-bold text-slate-800 mb-2">Mesa de Resucitación</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">Diseño ergonómico para UCI y emergencias con ajuste rápido de altura.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="text-medical-green font-bold">Disponible</span>
+                            <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20la%20Mesa%20de%20Resucitación" target="_blank" class="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-medical-green transition-colors">
+                                Cotizar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Equipment Slider -->
+    <section id="destacados" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <span class="text-medical-green font-semibold tracking-wider uppercase text-sm">Destacados</span>
+                    <h2 class="mt-3 font-heading text-4xl lg:text-5xl font-bold text-slate-800">Equipos destacados</h2>
+                    <p class="mt-4 text-lg text-slate-600">Descubra nuestra selección premium de tecnología médica.</p>
+                </div>
+                <div class="flex gap-2 mt-6 md:mt-0">
+                    <button class="swiper-prev-btn w-12 h-12 rounded-full border-2 border-slate-200 flex items-center justify-center hover:border-medical-green hover:text-medical-green transition-colors">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </button>
+                    <button class="swiper-next-btn w-12 h-12 rounded-full border-2 border-slate-200 flex items-center justify-center hover:border-medical-green hover:text-medical-green transition-colors">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper featured-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 h-full">
+                            <div class="h-80 overflow-hidden">
+                                <img src="assets/img/Rayos X Portátil.png" alt="Rayos X Portátil" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="font-heading text-2xl font-bold text-slate-800 mb-2">Rayos X Portátil</h3>
+                                <p class="text-slate-600 mb-4">Ideal para servicios de emergencia y unidades móviles con calidad de imagen excepcional.</p>
+                                <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20el%20Rayos%20X%20Portátil" target="_blank" class="inline-flex items-center gap-2 text-medical-green font-semibold hover:gap-3 transition-all">
+                                    Solicitar información <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 h-full">
+                            <div class="h-80 overflow-hidden">
+                                <img src="assets/img/Ultrasonido Cardíaco.png" alt="Ultrasonido" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="font-heading text-2xl font-bold text-slate-800 mb-2">Ultrasonido Cardíaco</h3>
+                                <p class="text-slate-600 mb-4">Especializado en ecocardiografía con Doppler color para diagnóstico cardiovascular.</p>
+                                <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20el%20Ultrasonido%20Cardíaco" target="_blank" class="inline-flex items-center gap-2 text-medical-green font-semibold hover:gap-3 transition-all">
+                                    Solicitar información <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 h-full">
+                            <div class="h-80 overflow-hidden">
+                                <img src="assets/img/ECG Inalámbrico.png" alt="Electrocardiógrafo" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="font-heading text-2xl font-bold text-slate-800 mb-2">ECG Inalámbrico</h3>
+                                <p class="text-slate-600 mb-4">Conectividad total con sistemas de hospital para monitoreo remoto continuo.</p>
+                                <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20el%20ECG%20Inalámbrico" target="_blank" class="inline-flex items-center gap-2 text-medical-green font-semibold hover:gap-3 transition-all">
+                                    Solicitar información <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 h-full">
+                            <div class="h-80 overflow-hidden">
+                                <img src="assets/img/Mesa de Quirófano Eléctrica.png" alt="Mesa Quirúrgica" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8">
+                                <h3 class="font-heading text-2xl font-bold text-slate-800 mb-2">Mesa Quirúrgica Hidráulica</h3>
+                                <p class="text-slate-600 mb-4">Versatilidad total para todo tipo de procedimientos quirúrgicos.</p>
+                                <a href="https://wa.me/526631011171?text=Hola,%20me%20interesa%20la%20Mesa%20de%20Quirófano%20Hidráulica" target="_blank" class="inline-flex items-center gap-2 text-medical-green font-semibold hover:gap-3 transition-all">
+                                    Solicitar información <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-emerald-400 font-semibold tracking-wider uppercase text-sm">Ventajas</span>
+                <h2 class="mt-3 font-heading text-4xl lg:text-5xl font-bold">¿Por qué elegir Comergreen?</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="microscope" class="w-8 h-8 text-emerald-400"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Equipos Profesionales</h3>
+                    <p class="text-slate-400 text-sm">Tecnología médica certificada de marcas líderes internacionales.</p>
+                </div>
+
+                <div class="text-center p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="cog" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Tecnología Confiable</h3>
+                    <p class="text-slate-400 text-sm">Equipos probados en entornos clínicos exigentes con soporte técnico.</p>
+                </div>
+
+                <div class="text-center p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="building-2" class="w-8 h-8 text-emerald-400"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Alta Calidad</h3>
+                    <p class="text-slate-400 text-sm">Materiales duraderos y diseño ergonómico para uso hospitalario continuo.</p>
+                </div>
+
+                <div class="text-center p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="message-circle" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Atención Inmediata</h3>
+                    <p class="text-slate-400 text-sm">Cotización rápida por WhatsApp con asesores especializados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-24 bg-emerald-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
+            <div class="bg-white rounded-3xl p-12 shadow-xl border border-emerald-100">
+                <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="message-circle" class="w-10 h-10 text-medical-green"></i>
+                </div>
+                <h2 class="font-heading text-4xl lg:text-5xl font-bold text-slate-800 mb-4">¿Listo para equipar su centro médico?</h2>
+                <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+                    Obtenga asesoría personalizada y cotización inmediata para equipos médicos profesionales. Estamos para ayudarle.
+                </p>
+                <a href="https://wa.me/526631011171?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white text-lg font-bold px-10 py-5 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/30 hover:-translate-y-1">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    <span>Solicitar cotización por WhatsApp</span>
+                </a>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-600">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="phone" class="w-5 h-5 text-medical-green"></i>
+                        <span>+1 234 567 890</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="mail" class="w-5 h-5 text-medical-green"></i>
+                        <span>ventas@comergreen.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-medical-green to-medical-blue rounded-xl flex items-center justify-center">
+                            <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="font-heading font-bold text-2xl text-white">Comer<span class="text-medical-green">green</span></span>
+                    </div>
+                    <p class="text-slate-400 mb-6 max-w-md">
+                        Especialistas en la distribución de equipos médicos de alta tecnología. Comprometidos con la salud y el bienestar a través de la innovación.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medical-green hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medical-green hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medical-green hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6">Enlaces rápidos</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#inicio" class="hover:text-medical-green transition-colors">Inicio</a></li>
+                        <li><a href="#productos" class="hover:text-medical-green transition-colors">Productos</a></li>
+                        <li><a href="#nosotros" class="hover:text-medical-green transition-colors">Nosotros</a></li>
+                        <li><a href="#contacto" class="hover:text-medical-green transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contacto</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-medical-green"></i>
+                            <span>+1 234 567 890</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-medical-green"></i>
+                            <span>WhatsApp: +1 234 567 890</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-medical-green"></i>
+                            <span>ventas@comergreen.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-slate-500">&copy; 2024 Comergreen - Equipos Médicos. Todos los derechos reservados.</p>
+                <p class="text-sm text-slate-500">Tecnología médica de alta precisión</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/526631011171?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="fixed bottom-6 right-6 z-50 group">
+        <div class="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-75"></div>
+        <div class="relative w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/40 hover:scale-110 transition-transform duration-300">
+            <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
+        </div>
+        <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            <span class="text-sm font-semibold text-slate-800">Cotizar ahora</span>
+        </div>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/components/script.js"></script>
+</body>
+</html>
